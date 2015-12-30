@@ -1,5 +1,5 @@
 <?php
-namespace Taurus;
+namespace taurus\core;
 use saturn\database\Database;
 
 abstract class Model {

@@ -1,5 +1,5 @@
 <?php
-namespace Taurus;
+namespace taurus\core;
 
 abstract class BaseAPI {
 

@@ -1,5 +1,5 @@
 <?php
-namespace Taurus;
+namespace taurus\core;
 require_once(dirname(__DIR__)."/Configurations.php");
 
 class Taurus {
