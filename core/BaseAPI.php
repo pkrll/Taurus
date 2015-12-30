@@ -1,7 +1,7 @@
 <?php
 namespace Taurus;
 
-abstract class Base {
+abstract class BaseAPI {
 
     private $httpMethod;
 
@@ -94,7 +94,7 @@ abstract class Base {
         $path = $path .  "{$this->resource}.php";
 
         if (file_exists($path) === false) {
-            throw new Exception("This endpoint does not exist.");
+            throw new \Exception("This endpoint does not exist.");
         }
 
         if (class_exists($this->resource) === false) {

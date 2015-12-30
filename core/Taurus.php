@@ -2,7 +2,7 @@
 namespace Taurus;
 require_once(dirname(__DIR__)."/Configurations.php");
 
-class Bootstrap {
+class Taurus {
     /**
      *  The URI request.
      *  @access private
@@ -32,6 +32,7 @@ class Bootstrap {
         $APIVersion = array_shift($URIRequest);
 
         $this->APIVersion = (is_numeric($APIVersion)) ? $APIVersion : kDefaultAPIVersion;
+        $this->URIRequest = $URIRequest;
     }
     /**
      *  Load the API platform, based on which version to use.
@@ -43,7 +44,7 @@ class Bootstrap {
         $basePath = kApplicationFolder . $baseFile;
         // Will thrown an error if the file does not exists.
         if (file_exists($basePath) === false) {
-            throw new Exception("API not found.");
+            throw new \Exception("API not found.");
         }
 
         if (class_exists(kDefaultClassName) === false) {

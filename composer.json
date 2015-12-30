@@ -16,7 +16,8 @@
     "homepage": "https://github.com/pkrll/Taurus",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "saturn/database": "^1.2"
     },
     "autoload": {
         "psr-4" : {
