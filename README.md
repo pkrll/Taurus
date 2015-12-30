@@ -92,6 +92,12 @@ All business logic should be put inside a model class. Models must be paired wit
 
 Taurus includes a database wrapper class, accessible through the class property database defined in ``Model``. See [Database](https://github.com/pkrll/Database) for more information on how to use the database connection.
 
+To connect to the database, you must first define and set the following constants in your config file:
+   - ``kHostname``: The hostname on which the database server resides.
+   - ``kDatabase``: The name of the database.
+   - ``kUsername``: The username.
+   - ``kPassword``: The password.
+
 Below is an example on how to use a model, based on the example above.
 ```php
 // /application/1.0/Resources/ExampleModel.php
