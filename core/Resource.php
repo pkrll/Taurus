@@ -13,6 +13,8 @@ abstract class Resource {
 
     protected $arguments;
 
+    protected $parameters;
+
     protected $statusCode = 200;
 
     protected $statusCodes = array(
@@ -60,7 +62,7 @@ abstract class Resource {
         999 => 'Unknown Internal Server Error'
     );
 
-    public function __construct($version, $httpMethod = "GET", $method = kDefaultMethodName, $arguments = NULL) {
+    public function __construct($version, $httpMethod = "GET", $method = kDefaultMethodName, $arguments = NULL, $parameters = NULL) {
         if (!method_exists($this, $method)) {
             throw new \Exception("Call to undefined method.");
         }
@@ -70,6 +72,7 @@ abstract class Resource {
         $this->model        = $this->loadModel();
         $this->httpMethod   = $httpMethod;
         $this->arguments    = $arguments;
+        $this->parameters   = $parameters;
 
         $this->$method();
     }

@@ -11,6 +11,8 @@ abstract class BaseAPI {
 
     private $arguments;
 
+    private $parameters;
+
     public function __construct($version, $request = array()) {
         header("Access-Control-Allow-Orgin: *");
         header("Access-Control-Allow-Methods: *");
@@ -30,6 +32,9 @@ abstract class BaseAPI {
                 } else {
                     $this->httpMethod = $httpMethod;
                 }
+
+                $this->parameters = $_POST;
+
                 break;
             default:
                 $this->httpMethod = "GET";
@@ -101,7 +106,7 @@ abstract class BaseAPI {
             include $path;
         }
 
-        new $this->resource($version, $this->httpMethod, $this->method, $this->arguments);
+        new $this->resource($version, $this->httpMethod, $this->method, $this->arguments, $this->parameters);
     }
 
 }
