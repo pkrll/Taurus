@@ -25,7 +25,7 @@ The folder structure should look something like this:
         + Example.php      // The end point
      - Models/
         + ExampleModel.php // The Model file for Example (optional)
-     - BaseAPI.php
+     - BaseAPI.php (Each API version must extend the Base API class.)
    - 1.1/
      - Resources/
      - Models/
@@ -44,6 +44,15 @@ try {
     new Taurus();
 } catch (Exception $e) {
     // Error handling
+}
+```
+Each API version must extend the BaseAPI class.
+```php
+// Add it to the API version's base folder, i.e. /application/1.0/BaseAPI.php
+use taurus\core\BaseAPI;
+
+class API extends BaseAPI {
+
 }
 ```
 To actually start using Taurus, you need to create ``Resources`` with end points.
