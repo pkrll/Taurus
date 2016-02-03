@@ -13,4 +13,4 @@ define("kModelsFolder",         kApplicationFolder . kPlaceholder . "/Models/");
 define('kPackageName', "Taurus");
 define('kPackageShortName', "Ta");
 define('kPackageDescription', "Small API Framework");
-define('kPackageVersion', "1.0.2");
+define('kPackageVersion', "1.1.0");

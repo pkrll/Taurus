@@ -90,6 +90,16 @@ abstract class Resource {
         return $this->statusCodes[$statusCode];
     }
 
+    function decodeJSON($json) {
+      if (is_array($json)) {
+        foreach ($json as $key => $value) {
+          $json[$key] = json_decode($value, true);
+        }
+      }
+
+      return $json;
+    }
+
     private function loadModel() {
         // The model must have the same
         // name as requested resource.
