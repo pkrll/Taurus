@@ -90,10 +90,16 @@ abstract class Resource {
         return $this->statusCodes[$statusCode];
     }
 
-    function decodeJSON($json) {
+    function decodeJSON($json, $assoc = true, $depth = 512) {
       if (is_array($json)) {
-        foreach ($json as $key => $value) {
-          $json[$key] = json_decode($value, true);
+        foreach($json as $key => $value) {
+          $json[$key] = $this->decodeJSON($value);
+        }
+      } else {
+        $decodedJSON = @json_decode($json, $assoc, $depth);
+
+        if (json_last_error() == JSON_ERROR_NONE) {
+          return $decodedJSON;
         }
       }
 
