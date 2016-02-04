@@ -96,9 +96,10 @@ abstract class BaseAPI {
      **/
     private function loadResource($version) {
         $path = str_replace(kPlaceholder, $version, kResourcesFolder);
-        $path = $path .  "{$this->resource}.php";
+        $path = $path . "{$this->resource}.php";
+        $path = $this->extractFilePath($path);
 
-        if (file_exists($path) === false) {
+        if ($path === false) {
             throw new \Exception("This endpoint does not exist.");
         }
 
@@ -107,6 +108,22 @@ abstract class BaseAPI {
         }
 
         new $this->resource($version, $this->httpMethod, $this->method, $this->arguments, $this->parameters);
+    }
+
+    private function extractFilePath($path) {
+      if (file_exists($path)) {
+        return $path;
+      }
+
+      $lowerCasePath = strtolower($path);
+      $matchingFiles = glob(dirname($path) . '/*');
+      foreach($matchingFiles as $file) {
+        if (strtolower($file) == $lowerCasePath) {
+          return $file;
+        }
+      }
+
+      return false;
     }
 
 }
